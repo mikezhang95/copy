@@ -1,3 +1,7 @@
+" 
+" Specialized vimrc file
+" By: Yuan Zhang
+"
 
 " 快捷键
 " 定义快捷键的前缀，即<leader>
@@ -73,8 +77,8 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 " 插件列表结束
 call vundle#end()
 
@@ -172,7 +176,8 @@ nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 " 标签/查找/替换暂时使用原生...
 
 
-
+" vim-markdown-preview
+let vim_markdown_preview_github=1
 
 " C++ 特性
 " *.cpp 和 *.h 间切换
