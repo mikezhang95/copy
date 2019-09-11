@@ -167,6 +167,8 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_seed_identifiers_with_syntax=1
 " 补全内容不以分割子窗口形式出现，只显示补全列表
 "set completeopt-=preview
+" 补全后自动关闭补全窗口
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " 跳转到定义/声明
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
@@ -219,6 +221,8 @@ endfunc
 " F7 NERDTree
 nnoremap <space> za
 map <F7> :NERDTreeToggle<CR>
+" 设置宽度
+let NERDTreeWinSize=15
 " 显示隐藏文件
 let NERDTreeShowHidden=1
 " NERDTree 子窗口中不显示冗余帮助信息
