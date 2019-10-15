@@ -78,7 +78,6 @@ Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 " 插件列表结束
 call vundle#end()
 
@@ -180,6 +179,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 
 " vim-markdown-preview
 let vim_markdown_preview_github=1
+let g:path_to_chrome = "/Applications/Google Chrome.app"
 
 " C++ 特性
 " *.cpp 和 *.h 间切换
@@ -188,7 +188,7 @@ nmap <silent> <Leader>sw :FSHere<cr>
 
 
 " F5 run program
-map <F5> :call CompileRunGcc()<CR>
+map <F6> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
         exec "w"
         if &filetype == 'c'
@@ -204,15 +204,14 @@ func! CompileRunGcc()
                 :!time bash %
         elseif &filetype == 'python'
                 exec "!clear"
-                exec "!time python3 %"
+                exec "!time python %"
         elseif &filetype == 'html'
-                exec "!firefox % &"
+                exec "!open -a \"Google Chrome\" %"
         elseif &filetype == 'go'
                 " exec "!go build %<"
                 exec "!time go run %"
-        elseif &filetype == 'mkd'
-                exec "!~/.vim/markdown.pl % > %.html &"
-                exec "!firefox %.html &"
+        elseif &filetype == 'markdown'
+                exec "!open -a \"Google Chrome\" %"
         endif
 endfunc
 
