@@ -29,6 +29,24 @@ nnoremap <Leader>kw <C-W>k
 " 跳转至下方的子窗
 nnoremap <Leader>jw <C-W>j
 
+" insert模式下光标移动
+" Alt + H            光标移当前行行首
+imap ˙ <ESC>I
+" Alt + J            光标移下一行行首
+imap ∆ <ESC><Down>I
+" Alt + K            光标移上一行行尾
+imap ˚ <ESC><Up>A
+" Alt + L            光标移当前行行尾
+imap ¬ <ESC>A
+" Ctrl  + H            光标左移一格
+imap <c-h> <Left>
+" Ctrl  + J            光标下移一格
+imap <c-j> <Down>
+" Ctrl  + K            光标上移一格
+imap <c-k> <Up>
+" Ctrl  + L            光标右移一格
+imap <c-l> <Right>
+
 
 " 开启文件类型侦测
 filetype on
@@ -78,6 +96,8 @@ Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'lyokha/vim-xkbswitch'
 " 插件列表结束
 call vundle#end()
 
@@ -233,3 +253,7 @@ map <F3> :MBEToggle<CR>
 " buffer 切换快捷键
 map <leader>. :MBEbn<CR>
 map <leader>, :MBEbp<CR>
+
+
+" 中文切换(https://juejin.im/entry/5be8eb8c6fb9a049c231f3c5)
+let g:XkbSwitchEnabled = 1
