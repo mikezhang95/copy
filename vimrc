@@ -282,9 +282,9 @@ let g:Lf_ShortcutF = "<leader>ff"
 " 定义快捷键查找buffer中的tag
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 " 定义快捷键查找most recent used files
-noremap <leader>fr :<C-U><C-R>=printf(bufTag "Leaderf mru %s", "")<CR><CR>
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 " 定义快捷键查找most recent used files
-noremap <leader>fh :<C-U><C-R>=printf(bufTag "Leaderf cmdHistory %s", "")<CR><CR>
+noremap <leader>fh :<C-U><C-R>=printf("Leaderf cmdHistory %s", "")<CR><CR>
 
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
