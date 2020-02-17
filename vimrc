@@ -29,7 +29,7 @@ nnoremap <Leader>kw <C-W>k
 " 跳转至下方的子窗
 nnoremap <Leader>jw <C-W>j
 
-" insert模式下光标移动
+" Insert模式下光标移动
 " Alt + H            光标移当前行行首
 imap ˙ <ESC>I
 " Alt + J            光标移下一行行首
@@ -52,7 +52,7 @@ imap <c-l> <Right>
 filetype on
 " 根据侦测到的不同类型加载对应的插件
 filetype plugin on
-" 让配置变更立即生效
+"" 让配置变更立即生效
 "autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " 开启实时搜索功能
 set incsearch
@@ -98,6 +98,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'lyokha/vim-xkbswitch'
+Plugin 'Yggdroot/LeaderF'
 " 插件列表结束
 call vundle#end()
 
@@ -150,7 +151,6 @@ set backspace=indent,eol,start
 
 
 
-
 " 折叠 
 " 基于缩进或语法进行代码折叠
 set foldmethod=indent
@@ -161,8 +161,6 @@ set nofoldenable
 set foldcolumn=3
 " 设置折叠层数为
 set foldlevel=99
-
-
 
 
 " YouCompleteMe
@@ -188,26 +186,39 @@ let g:ycm_seed_identifiers_with_syntax=1
 "set completeopt-=preview
 " 补全后自动关闭补全窗口
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " 跳转到定义/声明
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 
 
-" 标签/查找/替换暂时使用原生...
+" 书签：vim-signature快捷键
+let g:SignatureMap = {
+        \ 'PlaceNextMark'      :  "m+",
+        \ 'Purge<arksAtLine'   :  "m-",
+        \ 'PurgeMarks'         :  "mda",
+        \ 'GotoNextSpotByPos'  :  "mn",
+        \ 'GotoPrevSpotByPos'  :  "mp",
+        \ 'ListBufferMarks'    :  "m/"
+        \ }
 
 
-" vim-markdown-preview
-let vim_markdown_preview_github=1
-let g:path_to_chrome = "/Applications/Google Chrome.app"
 
-" C++ 特性
-" *.cpp 和 *.h 间切换
-nmap <silent> <Leader>sw :FSHere<cr>
+" 查找/替换暂时使用原生...
+
+" 标识符 tagbar
+map <F8> :TagbarToggle<CR>
+let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+" 设置标签子窗口的宽度
+let tagbar_width=25
+" tagbar 子窗口中不显示冗余帮助信息
+let g:tagbar_compact=1
+" 设置 ctags 对哪些代码标识符生成标签
 
 
 
-" F5 run program
+" F6 run program
 map <F6> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
         exec "w"
@@ -241,19 +252,39 @@ endfunc
 nnoremap <space> za
 map <F7> :NERDTreeToggle<CR>
 " 设置宽度
-let NERDTreeWinSize=15
+let NERDTreeWinSize=25
 " 显示隐藏文件
 let NERDTreeShowHidden=1
 " NERDTree 子窗口中不显示冗余帮助信息
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
-" 显示/隐藏 MiniBufExplorer 窗口
+" 显示/隐藏 MiniBufExplorer 窗口 s,v以不同方式创建window
 map <F3> :MBEToggle<CR>
 " buffer 切换快捷键
 map <leader>. :MBEbn<CR>
 map <leader>, :MBEbp<CR>
 
 
+" xkbswitch自动检测输入语言
 " 中文切换(https://juejin.im/entry/5be8eb8c6fb9a049c231f3c5)
 let g:XkbSwitchEnabled = 1
+
+
+
+" Leaderf
+" 打开预览模式
+let g:Lf_PreviewInPopup = 1
+" 设置可以预览的类型
+let g:Lf_PreviewResult = {'Function': 1, 'BufTag': 1 }
+" 定义快捷键查找文件 
+let g:Lf_ShortcutF = "<leader>ff"
+" 定义快捷键查找buffer中的tag
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+" 定义快捷键查找most recent used files
+noremap <leader>fr :<C-U><C-R>=printf(bufTag "Leaderf mru %s", "")<CR><CR>
+" 定义快捷键查找most recent used files
+noremap <leader>fh :<C-U><C-R>=printf(bufTag "Leaderf cmdHistory %s", "")<CR><CR>
+
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
