@@ -3,6 +3,9 @@
 " By: Yuan Zhang
 "
 
+" 关闭声音
+set noeb vb t_vb=
+
 " 快捷键
 " 定义快捷键的前缀，即<leader>
 let mapleader=";"
@@ -62,7 +65,6 @@ set ignorecase
 set nocompatible
 " vim 自身命令行模式智能补全
 set wildmenu
-
 
 
 " vundle 环境设置
@@ -204,17 +206,7 @@ let g:SignatureMap = {
         \ }
 
 
-
 " 查找/替换暂时使用原生...
-
-" 标识符 tagbar
-map <F8> :TagbarToggle<CR>
-let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
-" 设置标签子窗口的宽度
-let tagbar_width=25
-" tagbar 子窗口中不显示冗余帮助信息
-let g:tagbar_compact=1
-" 设置 ctags 对哪些代码标识符生成标签
 
 
 
@@ -248,9 +240,9 @@ endfunc
 
 
 
-" F7 NERDTree
+" F4 NERDTree
 nnoremap <space> za
-map <F7> :NERDTreeToggle<CR>
+map <F4> :NERDTreeToggle<CR>
 " 设置宽度
 let NERDTreeWinSize=25
 " 显示隐藏文件
@@ -259,6 +251,7 @@ let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
+
 " 显示/隐藏 MiniBufExplorer 窗口 s,v以不同方式创建window
 map <F3> :MBEToggle<CR>
 " buffer 切换快捷键
@@ -286,5 +279,5 @@ noremap <leader>fr :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 " 定义快捷键查找most recent used files
 noremap <leader>fh :<C-U><C-R>=printf("Leaderf cmdHistory %s", "")<CR><CR>
 
-noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fg :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
