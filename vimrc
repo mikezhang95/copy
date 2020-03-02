@@ -269,7 +269,13 @@ let g:XkbSwitchEnabled = 1
 " 打开预览模式
 let g:Lf_PreviewInPopup = 1
 " 设置可以预览的类型
-let g:Lf_PreviewResult = {'Function': 1, 'BufTag': 1 }
+let g:Lf_PreviewResult = {'File':0, 'BufTag':1, 'Mru':0, 'Function':1 }
+" 设置预览的水平位置
+let g:Lf_PreviewHorizontalPosition = 'right'
+" 设置window宽度
+let g:Lf_WindowHeight= 0.25
+" 设置预览的宽度
+let g:Lf_PreviewPopupWidth = 0
 " 定义快捷键查找文件 
 let g:Lf_ShortcutF = "<leader>ff"
 " 定义快捷键查找buffer中的tag
@@ -280,4 +286,4 @@ noremap <leader>fr :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>fh :<C-U><C-R>=printf("Leaderf cmdHistory %s", "")<CR><CR>
 
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-noremap <leader>fg :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
+noremap <leader>fg :<C-U><C-R>=printf("Leaderf! rg --all-buffers -e %s ", expand("<cword>"))<CR><CR>
