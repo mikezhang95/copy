@@ -287,3 +287,16 @@ noremap <leader>fh :<C-U><C-R>=printf("Leaderf cmdHistory %s", "")<CR><CR>
 
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 noremap <leader>fg :<C-U><C-R>=printf("Leaderf! rg --all-buffers -e %s ", expand("<cword>"))<CR><CR>
+
+
+" Vimdiff
+if &diff
+    let g:solarized_diffmode="high"
+    map ] ]c
+    map [ [c
+    map <Leader>1 :diffget LOCAL<CR>
+    map <Leader>2 :diffget BASE<CR>
+    map <Leader>3 :diffget REMOTE<CR>
+endif"
+
+
