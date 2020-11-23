@@ -97,7 +97,6 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'lyokha/vim-xkbswitch'
 Plugin 'Yggdroot/LeaderF'
@@ -297,6 +296,6 @@ if &diff
     map <Leader>1 :diffget LOCAL<CR>
     map <Leader>2 :diffget BASE<CR>
     map <Leader>3 :diffget REMOTE<CR>
-endif"
+endif
 
 
