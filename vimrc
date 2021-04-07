@@ -265,27 +265,55 @@ let g:XkbSwitchEnabled = 1
 
 
 " Leaderf
+" github: https://github.com/Yggdroot/LeaderF
+" blog: https://retzzz.github.io/dc9af5aa/ 
 " 打开预览模式
 let g:Lf_PreviewInPopup = 1
 " 设置可以预览的类型
-let g:Lf_PreviewResult = {'File':0, 'BufTag':1, 'Mru':0, 'Function':1 }
+let g:Lf_PreviewResult = {'File':0, 'Buffer':0, 'Mru':0, 'Tag':0, 'BufTag':1, 'Function':1 , 'Line':1, 'Colorscheme':0, 'Rg':0, 'Gtags':0}
+
 " 设置预览的水平位置
 let g:Lf_PreviewHorizontalPosition = 'right'
 " 设置window宽度
 let g:Lf_WindowHeight= 0.25
 " 设置预览的宽度
 let g:Lf_PreviewPopupWidth = 0
-" 定义快捷键查找文件 
-let g:Lf_ShortcutF = "<leader>ff"
-" 定义快捷键查找buffer中的tag
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-" 定义快捷键查找most recent used files
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-" 定义快捷键查找cmd history
-noremap <leader>fh :<C-U><C-R>=printf("Leaderf cmdHistory %s", "")<CR><CR>
+" 提示快捷键
+noremap <leader>fh :LeaderfSelf<cr>
 
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
-noremap <leader>fg :<C-U><C-R>=printf("Leaderf! rg --all-buffers -e %s ", expand("<cword>"))<CR><CR>
+" 查找文件 
+let g:Lf_ShortcutF = "<leader>ff"
+let g:Lf_WorkingDirectoryMode = 'AF'
+let g:Lf_RootMarkers = ['.git', '.svn', '.hg', '.project', '.root']
+
+" 查找字符串 string
+nmap <leader>fr <Plug>LeaderfRgPrompt 
+nmap <leader>fs <Plug>LeaderfRgCwordLiteralNoBoundary
+vmap <leader>fs <Plug>LeaderfRgVisualLiteralNoBoundary
+
+" 查找gtags
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_Gtagslabel = 'native-pygments'
+let g:Lf_GtagsSource = 1
+nmap <leader>fgd <Plug>LeaderfGtagsDefinition
+nmap <leader>fgr <Plug>LeaderfGtagsReference
+vmap <leader>fgd <Plug>LeaderfGtagsDefinition
+vmap <leader>fgr <Plug>LeaderfGtagsReference
+noremap <leader>fgo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fgn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fgp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+
+" 查找最近的文件
+noremap <leader>fm :LeaderfMru<cr>
+" 查找函数 
+noremap <leader>fx :LeaderfFunction<cr>
+" 查找buffer
+noremap <leader>fb :LeaderfBuffer<cr>
+" 查找buffer tag 
+noremap <leader>ft :LeaderfBufTag<cr>
+" 查找行
+noremap <leader>fl :LeaderfLine<cr>
 
 
 " Vimdiff
